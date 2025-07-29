@@ -24,7 +24,7 @@
 #define WORLD_Z 64
 
 // --- マルチプレイ用設定 ---
-#define SERVER_IP "sugiserver-v0.aa0.netvolante.jp"
+#define SERVER_IP "sugiserver-v1.aa0.netvolante.jp"
 #define SERVER_PORT 8080
 
 int kbhit(void);
