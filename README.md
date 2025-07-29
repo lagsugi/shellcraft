@@ -1,16 +1,17 @@
-# コンパイル&実行方法
-'shellcraftm.c' 'kbhit.c' 'Makefile'を用意
-'''
-make
-'''
+# コンパイル&実行方
+`shellcraftm.c` `kbhit.c` `Makefile`を用意
+
+`make`
+
 これでコンパイル
-'''
-./shellcraftm
-'''
+
+`./shellcraftm`
+
 これで実行！
 
 # 操作方法
-'''
+
+`
 WASDで前後左右に移動
 Spaceで上昇
 Vで下降
@@ -18,7 +19,7 @@ IJKLで視点を上下左右に移動
 数字キーでブロックを配置(0が空気なので破壊)
 Xキーでワールドデータ保存
 Qキーでゲームをやめる
-'''
+`
 
 # 備考
 初期設定ではディスプレイが90x30に設定されているので、その大きさまでコンソールを大きくして下さい。'shellcraftm.c'のdefineをいじることで拡大できます。
@@ -29,18 +30,20 @@ TeraTermで実行するとき、描画処理で入力が遅延するので、キ
 
 目をぼかすととてもきれいに見えます。
 
-mがついていない'shellcraft.c'がGeminiに後述するマルチプレイ機能を追加させていない純粋な状態で、コードにコメントが付けられています。
+mがついていない`shellcraft.c`がGeminiに後述するマルチプレイ機能を追加させていない純粋な状態で、コードにコメントが付けられています。
 
 # マルチプレイ
-クライアント
-'''
-./shellcraftm -m
-'''
+
 サーバー
-'''
-gcc scserver.c -o scserver -lpthread -lm
+
+`gcc scserver.c -o scserver -lpthread -lm
 ./scserver
-'''
+`
+
+クライアント
+
+`./shellcraftm -m`
+
 サーバーが死んでいなければ、動画で見せたマリオがいるワールドに行けます。
 マルチプレイ機能を追加してくれたGeminiに感謝。
 サーバーは転がってたRaspberry Piをポート開放して動いてます。
