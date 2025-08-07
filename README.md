@@ -1,83 +1,91 @@
-# コンパイル&実行方法
-`shellcraftm.c` `kbhit.c` `Makefile`を用意
+# sherukura
 
-```
-make
-```
+A simple Minecraft-like sandbox game that runs in the console (Linux only). It doesn’t even use ncurses.
 
-これでコンパイル
+---
 
-```
+## Build
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/lagsugi/sherukura.git
+   cd sherukura
+   ```
+2. Compile the game:
+
+   ```bash
+   make
+   ```
+
+---
+
+## Run
+
+```bash
 ./shellcraftm
 ```
 
-これで実行！
+---
 
-# 操作方法
+## Controls
 
-```
-WASDで前後左右に移動
+You can also see the in-game cheatsheet.
 
-Spaceで上昇
+* **Movement**:
 
-Vで下降
+  * `W` / `A` / `S` / `D` – move forward, left, backward, right
+  * `Space` – move up
+  * `V` – move down
 
-IJKLで視点を上下左右に移動
+* **View Rotation**:
 
-数字キーでブロックを配置(0が空気なので破壊)
+  * `I` / `J` / `K` / `L` – look up, left, down, right
 
-Xキーでワールドデータ保存
+* **Block Interaction**:
 
-Qキーでゲームをやめる
+  * Number keys (`1`–`9`, `0`) – select block type to place or destroy
 
-```
+* **Other**:
 
-# 備考
-初期設定ではディスプレイが90x30に設定されているので、その大きさまでコンソールを大きくして下さい。
+  * `X` – save the world
+  * `Q` – quit the game
 
-`shellcraftm.c`のdefineをいじることで拡大できます。
+---
 
-ワールドは`world.txt`として保存され、次回実行時world.txtがあれば自動で読み込まれます。
+## Notes
 
-TeraTermで実行するとき、描画処理で入力が遅延するので、キー長押しはしないほうが良いです。
+* The default display size is **90×30** characters. To change this, edit `shellcraftm.c`.
+* Your world is saved automatically to `world.txt` and will be reloaded on your next session.
+* **Do not** hold down keys when playing via TeraTerm. This may introduce input lag.
 
-目をぼかすととてもきれいに見えます。
+---
 
-mがついていない`shellcraft.c`がGeminiに後述するマルチプレイ機能を追加させていない純粋な状態で、コードにコメントが付けられています。
+## Non-multiplayer Version
 
-# マルチプレイ
+`shellcraft.c` does not have multiplayer feature at all.
 
-サーバー
+---
 
-```
+## Multiplayer
+
+### Server
+
+Compile and start the server:
+
+```bash
 gcc scserver.c -o scserver -lpthread -lm
 ./scserver
 ```
 
-クライアント
+By default, the server listens on port 8080.
 
-```
+### Client
+
+Run the multiplayer client using -m option:
+
+```bash
 ./shellcraftm -m
 ```
 
-サーバーが死んでいなければ、動画で見せたマリオがいるワールドに行けます。
-
-マルチプレイ機能を追加してくれたGeminiに感謝。
-
-サーバーは転がってたRaspberry Piをポート開放して動いてます。
-
-## プログラムの目的
-シェルで動くかつ3Dのゲームを作りたかった。
-
-初めは立方体を描画することを目指し、なし崩し的に某ゲームとなった。
-
-## 工夫した点
-マルチプレイ機能以外はGeminiの出力したコードをコピペせずにあくまで参考として実装した。
-
-草を二種類にすることでルックスをよくした。
-
-建築物
-
-## 苦労した点
-Gemini君はセグメンテーションフォルト等の問題は解決してくれるが、視覚的情報が分からない？ので、
-描画関係のバグは全て自力で修正するしかなかったこと。
+The client is configured to connect to `localhost:8080` by default. To change the server address or port, edit `shellcraftm.c` before compiling.
