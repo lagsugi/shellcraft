@@ -8,13 +8,13 @@ A simple Minecraft-like sandbox game that runs in the console (Linux only). It d
 
 1. Clone the repository:
 
-   ```bash
+   ```
    git clone https://github.com/lagsugi/sherukura.git
    cd sherukura
    ```
 2. Compile the game:
 
-   ```bash
+   ```
    make
    ```
 
@@ -22,7 +22,7 @@ A simple Minecraft-like sandbox game that runs in the console (Linux only). It d
 
 ## Run
 
-```bash
+```
 ./shellcraftm
 ```
 
@@ -73,7 +73,7 @@ You can also see the in-game cheatsheet.
 
 Compile and start the server:
 
-```bash
+```
 gcc scserver.c -o scserver -lpthread -lm
 ./scserver
 ```
@@ -84,7 +84,7 @@ By default, the server listens on port 8080.
 
 Run the multiplayer client using -m option:
 
-```bash
+```
 ./shellcraftm -m
 ```
 
